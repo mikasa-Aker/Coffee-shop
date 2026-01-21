@@ -15,7 +15,7 @@ const closeModal = document.querySelector('.close');
 const checkoutBtn = document.getElementById('checkout');
 
 /* =====================
-   TOAST FUNCTION
+    TOAST FUNCTION
 ===================== */
 function showToast(message) {
     const toast = document.createElement("div");
@@ -27,7 +27,7 @@ function showToast(message) {
 }
 
 /* =====================
-   UPDATE CART
+    UPDATE CART
 ===================== */
 function updateCart() {
     cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -74,7 +74,7 @@ function updateCart() {
 updateCart();
 
 /* =====================
-   ADD TO CART
+    ADD TO CART
 ===================== */
 document.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -94,7 +94,7 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
 });
 
 /* =====================
-   CART ACTIONS
+    CART ACTIONS
 ===================== */
 if (cartItems) {
     cartItems.addEventListener('click', e => {
@@ -117,7 +117,7 @@ if (cartItems) {
 }
 
 /* =====================
-   MODAL CONTROLS
+    MODAL CONTROLS
 ===================== */
 if (cartLink) {
     cartLink.addEventListener('click', e => {

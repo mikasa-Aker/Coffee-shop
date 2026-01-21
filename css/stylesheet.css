@@ -371,23 +371,31 @@ footer {
 @media (max-width: 768px) {
 
     nav {
-        flex-direction: column;
-        padding: 1rem;
+        flex-direction: row;
+        padding: 0.6rem 1rem;
     }
-
     .logo {
-        margin-bottom: 1rem;
-        text-align: center;
+        font-size: 1.3rem;
     }
-
     nav ul {
+        display: none;   /* hide menu */
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        background: #8b4513;
+        width: 200px;
+        border-radius: 10px;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+    nav ul.show {
+        display: flex;
     }
 
     nav ul li {
-        margin: 0.5rem 0;
+        margin: 10px 0;
+        text-align: center;
     }
 
     .hero h1 {

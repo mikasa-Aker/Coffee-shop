@@ -7,7 +7,6 @@ project  name:Coffee Heven
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Shop - Brewed to Perfection</title>
     <link rel="stylesheet" href="/Coffee-shop/css/stylesheet.css">  <!-- Links to shared CSS for styling -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">  <!-- Google Fonts for clean typography -->
@@ -18,8 +17,11 @@ project  name:Coffee Heven
 <body>
     <header>
         <nav>
-            <div class="logo">Coffee Heven</div>  
+            <div class="logo">Coffee Heven</div> 
+            
+            <div class="menu-toggle">&#9776;</div>
             <ul>
+
                 <li><a href="index.html"class="active">Home</a></li>  <!-- Links to pages (multi-page navigation) -->
                 <li><a href="menu.html"class="active">Menu</a></li>
                 <li><a href="Contact.html"class="active">Contact</a></li>
@@ -62,5 +64,13 @@ project  name:Coffee Heven
     </footer>
 
     <script src="/Coffee-shop/script.js"></script>  
+            <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('nav ul');
+
+        toggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        </script>
 </body>
-</html>
+</html> 
