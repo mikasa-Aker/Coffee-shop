@@ -4,6 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Shop - Brewed to Perfection</title>
-    <link rel="stylesheet" href="styles.css">  <!-- Links to shared CSS for styling -->
+    <link rel="stylesheet" href="/Coffee-shop/css/stylesheet.css">  <!-- Links to shared CSS for styling -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">  <!-- Google Fonts for clean typography -->
 </head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Coffee Heven</div>  
+            <ul>
+                <li><a href="index.html">Home</a></li>  <!-- Links to pages (multi-page navigation) -->
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="#" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>   
+                
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="hero">
+        <h1>Welcome to coffee Heven</h1>
+        <p>Fresh brew,cozy vibes, and unforgettable moments.</p>
+        <a href="menu.html" class="btn">Explore Menu</a>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>  <!-- Section title -->
+        <p>Founded in 2020, Coffee Haven is your go-to spot for artisanal coffee. We source beans from ethical farms and roast them fresh daily.</p>  <!-- Descriptive text -->
+    </section>
+    <section id="about">
+        <h2>About Us</h2>  <!-- Section title -->
+        <p>Founded in 2020, Coffee Haven is your go-to spot for artisanal coffee. We source beans from ethical farms and roast them fresh daily.</p>  <!-- Descriptive text -->
+    </section>
+    <div id="cart-modal" class="modal">          <div class="modal-content">
+            <span class="close">&times;</span>  
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>  
+            <p>Total: $<span id="cart-total">0.00</span></p>  
+            <button id="checkout">Checkout</button>  
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Coffee Haven. All rights reserved.</p>  
+    </footer>
+
+    <script src="/Coffee-shop/script.js"></script>  
+</body>
+</html>
