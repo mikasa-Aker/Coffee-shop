@@ -91,8 +91,9 @@ nav a.active {
     HERO SECTION
 ===================== */
 .hero {
-    background: url('/Coffee-shop/photos/g.webp') no-repeat center center/cover;  /* Background image */
+    background: url('/Coffee-shop/photos/Screenshot\ 2026-01-21\ 174417.png') no-repeat center center/cover;  /* Background image */
     height: 100vh;  /* Full viewport height */
+    padding: 80px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -368,27 +369,46 @@ footer {
     RESPONSIVE
 ===================== */
 @media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
     nav ul {
         flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 
     nav ul li {
-        margin: 0.6rem 0;
+        margin: 0.5rem 0;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
     }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
     .cart-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
-    .quantity-controls {
-        order: 1;
-    }
 }
-
+img {
+    max-width: 100%;
+    height: auto;
+}
 /* =====================
     TOAST NOTIFICATION
 ===================== */
