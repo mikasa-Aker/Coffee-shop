@@ -148,3 +148,21 @@ if (checkoutBtn) {
         cartModal.style.display = 'none';
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+    const navItems = document.querySelectorAll('nav ul li a');
+
+    if (!toggle || !navLinks) return;
+
+    toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    navItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+        });
+    });
+});
+
