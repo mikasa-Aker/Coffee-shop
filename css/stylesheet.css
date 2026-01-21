@@ -148,12 +148,17 @@ nav a.active {
 /* =====================
     SECTIONS
 ===================== */
-#about, #contact {
+#about, #contact,#info {
     padding: 2rem;
     background: white;
     margin: 3rem auto;
 }
 #about {
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+#info{
     max-width: 900px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -383,3 +388,33 @@ footer {
         order: 1;
     }
 }
+
+/* =====================
+    TOAST NOTIFICATION
+===================== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #8b4513;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: toastIn 0.4s ease forwards;
+    z-index: 2000;
+    background: linear-gradient(135deg, #8b4513, #d4a373);
+}
+
+
+
+@keyframes toastIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

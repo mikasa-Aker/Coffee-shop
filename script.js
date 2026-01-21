@@ -14,6 +14,21 @@ const cartLink = document.getElementById('cart-link');
 const closeModal = document.querySelector('.close');
 const checkoutBtn = document.getElementById('checkout');
 
+/* =====================
+   TOAST FUNCTION
+===================== */
+function showToast(message) {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => toast.remove(), 2000);
+}
+
+/* =====================
+   UPDATE CART
+===================== */
 function updateCart() {
     cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -21,6 +36,13 @@ function updateCart() {
 
     cartItems.innerHTML = '';
     let total = 0;
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Your cart is empty ☕</p>";
+        cartTotal.textContent = "0.00";
+        localStorage.setItem('cart', JSON.stringify(cart));
+        return;
+    }
 
     cart.forEach((item, index) => {
         const subtotal = item.price * item.quantity;
@@ -51,6 +73,9 @@ function updateCart() {
 
 updateCart();
 
+/* =====================
+   ADD TO CART
+===================== */
 document.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', () => {
         const name = btn.dataset.name;
@@ -58,18 +83,21 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
 
         const existingItem = cart.find(item => item.name === name);
         if (existingItem) {
-            existingItem.quantity += 1;
+            existingItem.quantity++;
         } else {
             cart.push({ name, price, quantity: 1 });
         }
 
         updateCart();
-        alert(`${name} added to cart!`);
+        showToast(`${name} added to cart`);
     });
 });
 
+/* =====================
+   CART ACTIONS
+===================== */
 if (cartItems) {
-    cartItems.addEventListener('click', (e) => {
+    cartItems.addEventListener('click', e => {
         const index = e.target.dataset.index;
 
         if (e.target.classList.contains('qty-btn')) {
@@ -88,6 +116,9 @@ if (cartItems) {
     });
 }
 
+/* =====================
+   MODAL CONTROLS
+===================== */
 if (cartLink) {
     cartLink.addEventListener('click', e => {
         e.preventDefault();
@@ -106,6 +137,9 @@ window.addEventListener('click', e => {
     if (e.target === cartModal) cartModal.style.display = 'none';
 });
 
+/* =====================
+    CHECKOUT
+===================== */
 if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
         alert('Checkout functionality would integrate with Stripe.');
