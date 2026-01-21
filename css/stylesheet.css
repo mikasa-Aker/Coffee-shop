@@ -1,3 +1,6 @@
+/* =====================
+    RESET & BASE
+===================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,25 +8,36 @@
 }
 body {
     font-family: 'Roboto', sans-serif;  /* Clean font from Google */
-    line-height: 1.6;  /* Readable line spacing */
-    color: #333;  /* Dark text */
+    line-height: 1.7;  /* Readable line spacing */
     background: linear-gradient(to bottom, #f4f4f4, #efe6dd);  /* Light gray background */
+    color: #333;
 }
+/* =====================
+    TYPOGRAPHY
+===================== */
 .logo {
-    font-weight: 700;
-    letter-spacing: 1px;
     font-family: 'Playfair Display', serif;
     font-size: 1.9rem;
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-weight: 700;
 }
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+/* =====================
+    HEADER & NAVBAR
+===================== */
 header {
-    background: #8b4513;  /* Coffee brown */
+    background: #8b4513;
     color: white;
-    padding: 1rem;  /* Spacing */
-    position: sticky;  /* Stays at top on scroll */
+    position: sticky;
     top: 0;
-    z-index: 100;  /* Above other content */
+    z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 nav {
@@ -42,29 +56,21 @@ nav ul li {
 nav a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s; 
-    position: relative;
-    padding-bottom: 4px;
     padding: 6px 10px;
-    border-radius: 6px; /* Smooth hover effect */
+    border-radius: 6px;
+    position: relative;
     transition: all 0.3s ease;
 }
-nav a.active {
-    color: #ffd700;
-    font-weight: 600;
-}
-
 nav a::after {
     content: '';
     position: absolute;
+    left: 0;
+    bottom: 0;
     width: 0;
     height: 2px;
     background: #ffd700;
-    left: 0;
-    bottom: 0;
     transition: width 0.3s ease;
 }
-
 nav a:hover {
     color: #ffd700;  /* Gold on hover */
     background: rgba(255,255,255,0.12);
@@ -72,6 +78,18 @@ nav a:hover {
 nav a:hover::after {
     width: 100%;
 }
+nav a.active {
+    color: #ffd700;
+    font-weight: 600;
+}
+#cart-link {
+    background: rgba(255,215,0,0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+/* =====================
+    HERO SECTION
+===================== */
 .hero {
     background: url('/Coffee-shop/photos/g.webp') no-repeat center center/cover;  /* Background image */
     height: 100vh;  /* Full viewport height */
@@ -83,14 +101,7 @@ nav a:hover::after {
     color: white;
     position: relative;
 }
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 3.4rem;
-    letter-spacing: 1px;
-    text-shadow: 2px 6px 15px rgba(0,0,0,0.7);
-}
+
 .hero::before {
     content: '';
     position: absolute;
@@ -100,26 +111,33 @@ nav a:hover::after {
 .hero * {
     position: relative;
 }
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-shadow: 2px 6px 15px rgba(0,0,0,0.7);
+}
 .hero p {
     font-size: 1.15rem;
     max-width: 650px;
     margin-bottom: 2rem;
     color: #f5f5f5;
 }
-
+/* =====================
+    BUTTONS
+===================== */
 .btn {
-    background: #ffd700;  /* Gold button */
+    background: #ffd700;
     color: #333;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    padding: 0.8rem 2.2rem;
+    border-radius: 30px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     letter-spacing: 0.5px;
-    padding: 0.8rem 2.2rem;
-    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -127,6 +145,9 @@ nav a:hover::after {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(255,215,0,0.5);
 }
+/* =====================
+    SECTIONS
+===================== */
 #about, #contact {
     padding: 2rem;
     background: white;
@@ -134,20 +155,70 @@ nav a:hover::after {
 }
 #about {
     max-width: 900px;
-    margin: 3rem auto;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
+/* =====================
+    MENU
+===================== */
+#menu {
+    padding: 2rem;
+    text-align: center;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.menu-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.menu-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+}
+
+.menu-item p {
+    color: #555;
+}
+
+.add-to-cart {
+    background: #8b4513;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-to-cart:hover {
+    background: #a0522d;
+}
+/* =====================
+    MODAL
+===================== */
 
 .modal {
-    display: none;  /* Hidden by default */
+    display: none;
     position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);  /* Dark overlay */
 }
 .modal-content {
     background: white;
@@ -162,82 +233,9 @@ nav a:hover::after {
     font-size: 2rem;
     cursor: pointer;
 }
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #333;
-    color: white;
-    letter-spacing: 0.5px;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {  /* Tablet/mobile adjustments */
-    nav ul {
-        flex-direction: column;  /* Stack nav vertically */
-    }
-    .hero h1 {
-        font-size: 2rem;  /* Smaller text */
-    }
-    nav ul li {
-        margin: 0.6rem 0;
-    }
-}
-#menu {
-    padding: 2rem;
-    text-align: center;
-}
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsive grid */
-    gap: 1rem;
-}
-.menu-item {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Subtle shadow */
-}
-.menu-item h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    margin: 0.5rem 0;
-}
-
-.menu-item p {
-    font-size: 1rem;
-    color: #555;
-}
-
-.menu-item img {
-    width: 100%;
-    height: 130px;
-    object-fit: cover;  /* Crops images nicely */
-    border-radius: 5px;
-}
-#menu h2,
-#about h2,
-#contact h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-}
-
-.add-to-cart {
-    background: #8b4513;
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-.add-to-cart:hover {
-    background: #a0522d;  /* Darker brown */
-}
+/* =====================
+    FORMS
+===================== */
 input, textarea {
     font-family: 'Poppins', sans-serif;
     padding: 0.7rem;
@@ -250,12 +248,33 @@ input:focus, textarea:focus {
     border-color: #8b4513;
     box-shadow: 0 0 0 2px rgba(139,69,19,0.2);
 }
-#cart-link {
-    background: rgba(255,215,0,0.15);
-    padding: 6px 12px;
-    border-radius: 20px;
+
+/* =====================
+    FOOTER
+===================== */
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
 }
 
+/* =====================
+    RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
 
+    nav ul li {
+        margin: 0.6rem 0;
+    }
 
-
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
