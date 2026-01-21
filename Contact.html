@@ -19,5 +19,30 @@
             </ul>
         </nav>
     </header>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">  <!-- Form with required fields -->
+            <input type="text" id="name" placeholder="Your Name" required>  <!-- Text input -->
+            <input type="email" id="email" placeholder="Your Email" required>  <!-- Email input for validation -->
+            <textarea id="message" placeholder="Your Message" required></textarea>  <!-- Multi-line text -->
+            <button type="submit">Send</button>  <!-- Submit button -->
+        </form>
+    </section>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button id="checkout">Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Coffee Haven. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
