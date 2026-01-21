@@ -226,6 +226,9 @@ nav a.active {
         display: block;
     }
 }
+.menu-icon {
+    display: none;
+}
 
 /* =====================
     MODAL
@@ -434,6 +437,9 @@ footer {
 
     .nav-links.active {
         display: flex;
+    }
+    .menu-icon {
+        display: block;
     }
 }
 img {
