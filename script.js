@@ -1,5 +1,11 @@
-// Cart functionality
-let cart = JSON.parse(localStorage.getItem('cart')) || [];  // Load cart from storage or start empty
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+cart = cart.map(item => ({
+    name: item.name,
+    price: Number(item.price),
+    quantity: item.quantity ? Number(item.quantity) : 1
+}));
+
 const cartCount = document.getElementById('cart-count');
 const cartItems = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
@@ -8,79 +14,103 @@ const cartLink = document.getElementById('cart-link');
 const closeModal = document.querySelector('.close');
 const checkoutBtn = document.getElementById('checkout');
 
-// Update cart display
 function updateCart() {
-    cartCount.textContent = cart.length;  // Update nav count
-    if (cartItems) {  // Only update if on a page with cart list (e.g., menu/contact)
-        cartItems.innerHTML = '';  // Clear list
-        let total = 0;
-        cart.forEach(item => {  // Loop through cart items
-            const li = document.createElement('li');
-            li.textContent = `${item.name} - $${item.price}`;
-            cartItems.appendChild(li);
-            total += parseFloat(item.price);  // Calculate total
-        });
-        cartTotal.textContent = total.toFixed(2);  // Format to 2 decimals
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));  // Save to browser storage
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    if (!cartItems) return;
+
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="cart-item">
+                <span class="item-name">${item.name}</span>
+
+                <div class="quantity-controls">
+                    <button class="qty-btn" data-action="decrement" data-index="${index}">-</button>
+                    <span class="qty">${item.quantity}</span>
+                    <button class="qty-btn" data-action="increment" data-index="${index}">+</button>
+                </div>
+
+                <span class="item-price">$${item.price.toFixed(2)} each</span>
+                <span class="subtotal">Subtotal: $${subtotal.toFixed(2)}</span>
+                <button class="remove-btn" data-index="${index}">Remove</button>
+            </div>
+        `;
+        cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = total.toFixed(2);
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Initialize cart count on page load
 updateCart();
 
-// Add to cart (only on menu page)
 document.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', () => {
-        const name = btn.dataset.name;  // Get item name from button
-        const price = btn.dataset.price;  // Get price
-        cart.push({ name, price });  // Add to cart array
-        updateCart();  // Refresh display
-        alert(`${name} added to cart!`);  // User feedback
+        const name = btn.dataset.name;
+        const price = Number(btn.dataset.price);
+
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ name, price, quantity: 1 });
+        }
+
+        updateCart();
+        alert(`${name} added to cart!`);
     });
 });
 
-// Modal controls
-if (cartLink) {
-    cartLink.addEventListener('click', (e) => {
-        e.preventDefault();  // Prevent page jump
-        cartModal.style.display = 'block';  // Show modal
-        updateCart();  // Ensure latest cart
+if (cartItems) {
+    cartItems.addEventListener('click', (e) => {
+        const index = e.target.dataset.index;
+
+        if (e.target.classList.contains('qty-btn')) {
+            const action = e.target.dataset.action;
+
+            if (action === 'increment') cart[index].quantity++;
+            if (action === 'decrement' && cart[index].quantity > 1) cart[index].quantity--;
+
+            updateCart();
+        }
+
+        if (e.target.classList.contains('remove-btn')) {
+            cart.splice(index, 1);
+            updateCart();
+        }
     });
 }
+
+if (cartLink) {
+    cartLink.addEventListener('click', e => {
+        e.preventDefault();
+        cartModal.style.display = 'block';
+        updateCart();
+    });
+}
+
 if (closeModal) {
     closeModal.addEventListener('click', () => {
-        cartModal.style.display = 'none';  // Hide modal
+        cartModal.style.display = 'none';
     });
 }
-window.addEventListener('click', (e) => {
-    if (e.target === cartModal) {  // Click outside to close
-        cartModal.style.display = 'none';
-    }
+
+window.addEventListener('click', e => {
+    if (e.target === cartModal) cartModal.style.display = 'none';
 });
 
-// Checkout (placeholder)
 if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
-        alert('Checkout functionality would integrate with a payment API like Stripe.');  // Placeholder
-        cart = [];  // Clear cart
+        alert('Checkout functionality would integrate with Stripe.');
+        cart = [];
         updateCart();
         cartModal.style.display = 'none';
-    });
-}
-
-// Contact form (only on contact page)
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();  // Stop default form submit
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        if (name && email && message) {  // Basic validation
-            alert('Thank you for your message!');  // Success feedback
-            // In real app: Send to server with fetch()
-        } else {
-            alert('Please fill all fields.');  // Error feedback
-        }
     });
 }
