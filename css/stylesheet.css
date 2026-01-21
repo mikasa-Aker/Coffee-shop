@@ -215,6 +215,18 @@ nav a.active {
 .add-to-cart:hover {
     background: #a0522d;
 }
+/* Hide hamburger menu on desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
 /* =====================
     MODAL
 ===================== */
@@ -370,6 +382,7 @@ footer {
 ===================== */
 @media (max-width: 768px) {
 
+    
     nav {
         flex-direction: row;
         padding: 0.6rem 1rem;
@@ -411,6 +424,16 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 }
 img {
