@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Ensures padding/borders don't affect width */
+}
+body {
+    font-family: 'Roboto', sans-serif;  /* Clean font from Google */
+    line-height: 1.6;  /* Readable line spacing */
+    color: #333;  /* Dark text */
+    background-color: #f4f4f4;  /* Light gray background */
+}
+header {
+    background: #8b4513;  /* Coffee brown */
+    color: white;
+    padding: 1rem;  /* Spacing */
+    position: sticky;  /* Stays at top on scroll */
+    top: 0;
+    z-index: 100;  /* Above other content */
+}
+nav {
+    display: flex;
+    justify-content: space-between;  /* Logo left, links right */
+    align-items: center;
+}
