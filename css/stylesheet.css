@@ -45,6 +45,7 @@ nav {
     justify-content: space-between;  /* Logo left, links right */
     align-items: center;
     padding: 0.8rem 3rem;
+    position: relative;
 }
 nav ul {
     list-style: none;
@@ -225,10 +226,11 @@ nav a.active {
     .menu-toggle {
         display: block;
     }
-}
-.menu-icon {
+    .menu-icon {
     display: none;
 }
+}
+
 
 /* =====================
     MODAL
@@ -474,4 +476,5 @@ img {
         transform: translateY(0);
     }
 }
+/* FORCE hide hamburger on desktop */
 
