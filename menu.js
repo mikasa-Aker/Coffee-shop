@@ -1,7 +1,7 @@
 // Load products from localStorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
-const menuContainer = document.getElementById("menuItems");
+const menuContainer = document.getElementById("menu-Item");
 
 function displayMenu(filter = "all") {
     menuContainer.innerHTML = "";
@@ -19,7 +19,7 @@ function displayMenu(filter = "all") {
 
     filteredProducts.forEach(product => {
         const div = document.createElement("div");
-        div.className = "menu-item";
+        div.className = "menu-Item";
 
         div.innerHTML = `
             <img src="${product.image || 'https://via.placeholder.com/300'}">

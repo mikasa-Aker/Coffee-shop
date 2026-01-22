@@ -92,12 +92,13 @@ nav a.active {
     HERO SECTION
 ===================== */
 .hero {
-    background: url('/Coffee-shop/photos/Screenshot\ 2026-01-21\ 174417.png') no-repeat center center/cover;  /* Background image */
-    height: 100vh;  /* Full viewport height */
+    background: url('/Coffee-shop/photos/photo.png') no-repeat center center/cover;  /* Background image */
+    min-height: 70vh;
     padding: 80px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     align-items: center;
     text-align: center;
     color: white;
@@ -169,8 +170,12 @@ nav a.active {
     MENU
 ===================== */
 #menu {
-    padding: 3rem 1.5rem;
-    max-width: 1200px;
+    padding: 4rem 2rem;
+    width: 100%;
+    background: linear-gradient(to bottom, #f4f4f4, #efe6dd);
+}
+.menu-container {
+    max-width: 1300px;
     margin: auto;
 }
 
@@ -444,11 +449,11 @@ footer {
         height: 150px;
     }
 
-    .menu-item h3 {
+    .menu-Item h3 {
         font-size: 1.2rem;
     }
 
-    .menu-item p {
+    .menu-Item p {
         font-size: 1rem;
     }
     
@@ -527,14 +532,15 @@ img {
     color: #333;
 }
 /*Admin Page */
-#info {
+/* Admin Page */
+.admin-info {
     max-width: 900px;
     margin: 3rem auto;
     padding: 2rem;
     background: white;
     border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
+
 #productForm {
     display: grid;
     grid-template-columns: 1fr 1fr;

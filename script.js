@@ -30,9 +30,13 @@ function showToast(message) {
     UPDATE CART
 ===================== */
 function updateCart() {
-    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    // ✅ STOP if cart HTML does not exist (Admin page)
+    if (!cartCount || !cartItems || !cartTotal) return;
 
-    if (!cartItems) return;
+    cartCount.textContent = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
 
     cartItems.innerHTML = '';
     let total = 0;
@@ -50,28 +54,31 @@ function updateCart() {
 
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="cart-item">
-                <span class="item-name">${item.name}</span>
+    <div class="cart-item">
+        <span class="item-name">${item.name}</span>
 
-                <div class="quantity-controls">
-                    <button class="qty-btn" data-action="decrement" data-index="${index}">-</button>
-                    <span class="qty">${item.quantity}</span>
-                    <button class="qty-btn" data-action="increment" data-index="${index}">+</button>
-                </div>
+        <div class="quantity-controls">
+            <button class="qty-btn" data-action="decrement" data-index="${index}">-</button>
+            <span class="qty">${item.quantity}</span>
+            <button class="qty-btn" data-action="increment" data-index="${index}">+</button>
+        </div>
 
-                <span class="item-price">$${item.price.toFixed(2)} each</span>
-                <span class="subtotal">Subtotal: $${subtotal.toFixed(2)}</span>
-                <button class="remove-btn" data-index="${index}">Remove</button>
-            </div>
-        `;
+        <span class="subtotal">$${subtotal.toFixed(2)}</span>
+        <button class="remove-btn" data-index="${index}">Remove</button>
+    </div>
+`;
+
         cartItems.appendChild(li);
     });
 
     cartTotal.textContent = total.toFixed(2);
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+if (cartCount) {
+    updateCart();
+}
 
-updateCart();
+    
 
 /* =====================
     ADD TO CART
