@@ -179,27 +179,27 @@ nav a.active {
     gap: 1rem;
 }
 
-.menu-item {
+.menuItems {
     background: white;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.menu-item img {
+.menu-Item img {
     width: 100%;
     height: 130px;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.menu-item h3 {
+.menuItems h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
     margin: 0.5rem 0;
 }
 
-.menu-item p {
+.menuItems p {
     color: #555;
 }
 

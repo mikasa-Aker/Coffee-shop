@@ -13,7 +13,15 @@
 <form id="productForm">
     <input type="text" id="name" placeholder="Coffee Name" required>
     <input type="number" id="price" placeholder="Price" required>
-    <button type="submit">Add Product</button>
+    <input type="text" id="image" placeholder="Image URL" required>
+    <button type="submit" id="submitBtn">Add Product</button>
+<select id="category" required>
+    <option value="">Select Category</option>
+    <option value="hot">Hot Drinks</option>
+    <option value="cold">Cold Drinks</option>
+    <option value="food">Food</option>
+</select>
+
 </form>
 
 <h2>Product List</h2>

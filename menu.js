@@ -3,27 +3,59 @@ let products = JSON.parse(localStorage.getItem("products")) || [];
 
 const menuContainer = document.getElementById("menuItems");
 
-function displayMenu() {
+function displayMenu(filter = "all") {
     menuContainer.innerHTML = "";
 
-    if (products.length === 0) {
-        menuContainer.innerHTML = "<p>No menu items yet</p>";
+    let filteredProducts = products;
+
+    if (filter !== "all") {
+        filteredProducts = products.filter(p => p.category === filter);
+    }
+
+    if (filteredProducts.length === 0) {
+        menuContainer.innerHTML = "<p>No items in this category ☕</p>";
         return;
     }
 
-    products.forEach(product => {
+    filteredProducts.forEach(product => {
         const div = document.createElement("div");
         div.className = "menu-item";
 
         div.innerHTML = `
+            <img src="${product.image || 'https://via.placeholder.com/300'}">
             <h3>${product.name}</h3>
             <p>$${product.price}</p>
-            <button>Add to Cart</button>
+            <button 
+                class="add-to-cart"
+                data-name="${product.name}"
+                data-price="${product.price}">
+                Add to Cart
+            </button>
         `;
 
         menuContainer.appendChild(div);
     });
+
+    attachCartButtons();
 }
 
-// Run when page loads
+function attachCartButtons() {
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = Number(btn.dataset.price);
+
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            updateCart();
+            showToast(`${name} added to cart`);
+        });
+    });
+}
+
 displayMenu();
