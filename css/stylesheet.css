@@ -461,9 +461,7 @@ footer {
     display: none;
     }
 }
-img {
-    display: block;
-}
+
 /* =====================
     TOAST NOTIFICATION
 ===================== */
@@ -574,23 +572,19 @@ img {
     padding: 0;
 }
 
-#productList li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 12px;
-    margin-bottom: 12px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
+
+
+/* =====================
+    ADMIN IMAGE FIX (FINAL)
+===================== */
 
 #productList img {
-    width: 60px;
-    height: 45px;
+    width: 60px !important;
+    height: 45px !important;
     object-fit: cover;
     border-radius: 6px;
+    flex-shrink: 0;
+    max-width: 60px;
 }
 
 #productList button {
@@ -608,6 +602,23 @@ img {
     background: #dc3545;
     color: white;
 }
+/* Admin product text */
+.product-text {
+    flex: 1;                 /* 🔥 prevents image stretch */
+    margin-left: 10px;
+    font-size: 0.95rem;
+}
 #productList li {
+    display: flex;
     align-items: center;
+    gap: 12px;
+}
+/* ===== ADMIN IMAGE HARD FIX ===== */
+#productList li img {
+    width: 60px !important;
+    height: 45px !important;
+    max-width: 60px !important;
+    max-height: 45px !important;
+    object-fit: cover !important;
+    border-radius: 6px;
 }

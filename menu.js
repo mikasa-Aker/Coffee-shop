@@ -1,16 +1,15 @@
 // Load products from localStorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
-const menuContainer = document.getElementById("menu-Item");
+const menuContainer = document.getElementById("menu-items");
 
 function displayMenu(filter = "all") {
     menuContainer.innerHTML = "";
 
-    let filteredProducts = products;
-
-    if (filter !== "all") {
-        filteredProducts = products.filter(p => p.category === filter);
-    }
+    const filteredProducts =
+        filter === "all"
+            ? products                   // ✅ ALL shows everything
+            : products.filter(p => p.category === filter);
 
     if (filteredProducts.length === 0) {
         menuContainer.innerHTML = "<p>No items in this category ☕</p>";
@@ -22,11 +21,10 @@ function displayMenu(filter = "all") {
         div.className = "menu-Item";
 
         div.innerHTML = `
-            <img src="${product.image || 'https://via.placeholder.com/300'}">
+            <img src="${product.image}">
             <h3>${product.name}</h3>
             <p>$${product.price}</p>
-            <button 
-                class="add-to-cart"
+            <button class="add-to-cart"
                 data-name="${product.name}"
                 data-price="${product.price}">
                 Add to Cart

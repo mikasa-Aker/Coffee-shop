@@ -1,3 +1,10 @@
+// 🔥 One-time product reset (NO console needed)
+if (!localStorage.getItem("products_v2")) {
+    localStorage.removeItem("products"); // delete old broken data
+    localStorage.setItem("products_v2", "true"); // mark as done
+}
+
+
 const ADMIN_PASSWORD = "coffee123";
 
 // Ask password FIRST
@@ -23,11 +30,16 @@ function displayProducts() {
         const li = document.createElement("li");
 
         li.innerHTML = `
-            <img src="${product.image || 'https://via.placeholder.com/60'}">
-            ${product.name} - $${product.price} (${product.category || "no category"})
-            <button onclick="editProduct(${index})">Edit</button>
-            <button onclick="deleteProduct(${index})">Remove</button>
-        `;
+    <img src="${product.image || 'https://via.placeholder.com/60'}">
+
+    <span class="product-text">
+        <strong>${product.name}</strong><br>
+        $${product.price} — ${product.category || "no category"}
+    </span>
+
+    <button onclick="editProduct(${index})">Edit</button>
+    <button onclick="deleteProduct(${index})">Remove</button>
+`;
 
         list.appendChild(li);
     });
@@ -60,7 +72,7 @@ form.addEventListener("submit", function (e) {
     const name = document.getElementById("name").value;
     const price = document.getElementById("price").value;
     const image = document.getElementById("image").value;
-    const category = document.getElementById("category").value;
+    const category = document.getElementById("category").value.toLowerCase();
 
     if (!category) {
         alert("Please select a category");
