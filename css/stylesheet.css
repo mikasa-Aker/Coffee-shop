@@ -177,31 +177,34 @@ nav a.active {
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 20px;
 }
 
-.menuItems {
+.menu-Item {
     background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    text-align: center;
 }
-
 .menu-Item img {
     width: 100%;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 5px;
+    height: 160px;          /* FORCE SIZE */
+    object-fit: cover;      /* PREVENT STRETCH */
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-.menuItems h3 {
+
+.menu-Item h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    margin: 8px 0;
 }
 
-.menuItems p {
-    color: #555;
+.menu-Item p {
+    font-size: 1rem;
+    margin-bottom: 10px;
 }
 
 .add-to-cart {
@@ -223,14 +226,7 @@ nav a.active {
 }
 
 /* Show hamburger only on small screens */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    .menu-icon {
-    display: none;
-}
-}
+
 
 
 /* =====================
@@ -444,7 +440,7 @@ footer {
     .menu-icon {
         display: block;
     }
-    .menu-item img {
+    .menu-Item img {
         height: 150px;
     }
 
@@ -455,11 +451,13 @@ footer {
     .menu-item p {
         font-size: 1rem;
     }
-
+    
+    .menu-icon {
+    display: none;
+    }
 }
 img {
-    max-width: 100%;
-    height: auto;
+    display: block;
 }
 /* =====================
     TOAST NOTIFICATION
@@ -603,4 +601,7 @@ img {
 #productList button:last-of-type {
     background: #dc3545;
     color: white;
+}
+#productList li {
+    align-items: center;
 }
