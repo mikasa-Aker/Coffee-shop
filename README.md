@@ -4,7 +4,7 @@
 A modern, multi-page website for a fictional coffee shop, built as a portfolio project to showcase front-end development skills. Features an interactive menu, persistent shopping cart, contact form, and responsive design for all devices.
 
 ## 🚀 Live Demo
-[View Live Site](https://mikasa-acker.github.io/coffee-shop/)  
+[https://mikasa-aker.github.io/Coffee-shop/] 
 ## 📋 Features
 - **Multi-Page Layout:** Separate pages for Home, Menu, and Contact for better navigation and SEO.
 - **Interactive Menu:** Grid-based coffee menu with "Add to Cart" functionality.
