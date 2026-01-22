@@ -40,6 +40,7 @@ function editProduct(index) {
     document.getElementById("name").value = product.name;
     document.getElementById("price").value = product.price;
     document.getElementById("image").value = product.image || "";
+    document.getElementById("category").value = product.category;
 
     editIndex = index;
 

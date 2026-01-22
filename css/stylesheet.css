@@ -169,8 +169,9 @@ nav a.active {
     MENU
 ===================== */
 #menu {
-    padding: 2rem;
-    text-align: center;
+    padding: 3rem 1.5rem;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .menu-grid {
@@ -443,6 +444,18 @@ footer {
     .menu-icon {
         display: block;
     }
+    .menu-item img {
+        height: 150px;
+    }
+
+    .menu-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .menu-item p {
+        font-size: 1rem;
+    }
+
 }
 img {
     max-width: 100%;
@@ -477,4 +490,117 @@ img {
     }
 }
 /* FORCE hide hamburger on desktop */
+.menu-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
 
+.filter-btn {
+    padding: 8px 22px;
+    border-radius: 25px;
+    border: 2px solid #8b4513;
+    background: transparent;
+    color: #8b4513;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: #ffd700;
+    color: #333;
+    border-color: #ffd700;
+}
+
+
+
+
+.filter-btn:hover {
+    background: #8b4513;
+    color: white;
+}
+
+.filter-btn.active {
+    background: #ffd700;
+    border-color: #ffd700;
+    color: #333;
+}
+/*Admin Page */
+#info {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+#productForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#productForm input,
+#productForm select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#submitBtn {
+    grid-column: span 2;
+    background: #8b4513;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+    background: #a0522d;
+}
+#productList {
+    list-style: none;
+    padding: 0;
+}
+
+#productList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+#productList img {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+#productList button {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#productList button:first-of-type {
+    background: #ffd700;
+}
+
+#productList button:last-of-type {
+    background: #dc3545;
+    color: white;
+}
